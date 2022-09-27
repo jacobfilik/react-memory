@@ -1,8 +1,12 @@
 import "./App.css";
-import star from "./images/star.svg";
-import heart from "./images/heart.svg";
+import getImageMap from "./Cards";
 
 import { useState } from "react";
+
+var randomProperty = function (obj) {
+  var keys = Object.keys(obj);
+  return obj[keys[(keys.length * Math.random()) << 0]];
+};
 
 const Card = (props) => {
   const [flipped, setFlipped] = useState(false);
@@ -17,11 +21,9 @@ const Card = (props) => {
       onClick={handleClick}
     >
       <div className="flip-card-inner">
-        <div className="flip-card-front">
-          <img src={star} alt="" />
-        </div>
+        <div className="flip-card-front"></div>
         <div className="flip-card-back">
-          <img src={heart} alt="" />
+          <img src={randomProperty(getImageMap())} alt="" />
         </div>
       </div>
     </div>
