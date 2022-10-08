@@ -46,16 +46,16 @@ function getImageMap() {
 }
 
 const Card = (props) => {
-  const [flipped, setFlipped] = useState(false);
-  const handleClick = () => {
-    setFlipped(!flipped);
-    console.log("click " + props.number);
-  };
+  // const [flipped, setFlipped] = useState(false);
+  // const handleClick = () => {
+  //   setFlipped(!flipped);
+  //   console.log("click " + props.number);
+  // };
 
   return (
     <div
-      className={flipped ? "flipped-card" : "flip-card"}
-      onClick={handleClick}
+      className={props.flipped ? "flipped-card" : "flip-card"}
+      onClick={props.onClick}
     >
       <div className="flip-card-inner">
         <div className="flip-card-front"></div>
@@ -67,15 +67,66 @@ const Card = (props) => {
   );
 };
 
-const Cards = (props) => {
-  const imageArray = getCardStates();
+// const useGameState = () => {
+// return { cardList, flipped, onClick };
+// };
 
-  //const onClick = () =>
+const CardGame = (props) => {
+  //const { createGame, onClick } = useGameState();
+  //var { cardList, flipped } = createGame();
+};
+
+const Cards = (props) => {
+  console.log("Create state");
+
+  const [cardList, setCardList] = useState(getCardStates());
+
+  const [flipped, setFlipped] = useState(
+    new Array(cardList.length).fill(false)
+  );
+  const [matched, setMatched] = useState(
+    new Array(cardList.length).fill(false)
+  );
+
+  const onClick = (number) => {
+    console.log("ONCLICK" + number);
+    const f = [...flipped];
+    f[number] = !f[number];
+
+    const count = f.filter((v) => v === true).length;
+
+    if (count === 2) {
+      f.fill(false);
+    }
+
+    setFlipped(f);
+  };
+
+  return <CardsInner cardList={cardList} flipped={flipped} onClick={onClick} />;
+};
+
+const CardsInner = (props) => {
+  //const { cardList, flipped, onClick } = useGameState();
+
+  const createClick = (index) => props.onClick(index);
+  console.log(props);
+
+  //var cardList = getCardStates();
+
+  const cl = props.cardList;
+
+  const onClick1 = (index) => console.log(index);
   //start to pass down state on props
   return (
     <div>
-      {imageArray.map((image, index) => (
-        <Card key={index} number={index} image={image} />
+      {cl.map((image, index) => (
+        <Card
+          key={index}
+          number={index}
+          image={image}
+          onClick={(e) => createClick(index)}
+          flipped={props.flipped[index]}
+        />
       ))}
     </div>
   );
