@@ -93,13 +93,19 @@ const Cards = (props) => {
     const f = [...flipped];
     f[number] = !f[number];
 
+    setFlipped(f);
+
     const count = f.filter((v) => v === true).length;
 
     if (count === 2) {
-      f.fill(false);
-    }
+      const flipBack = () => {
+        const f = [...flipped];
+        f.fill(false);
+        setFlipped(f);
+      };
 
-    setFlipped(f);
+      setTimeout(flipBack, 2000);
+    }
   };
 
   return <CardsInner cardList={cardList} flipped={flipped} onClick={onClick} />;
