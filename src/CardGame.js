@@ -34,6 +34,11 @@ function getImageMap() {
   };
 }
 
+const CardGameMatch = () => {
+  const [gameId, setGameId] = useState(1);
+  return <CardGame key={gameId} startNewGame={() => setGameId(gameId + 1)} />;
+};
+
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -123,6 +128,7 @@ const CardGame = (props) => {
       flipped={flipped}
       matched={matched}
       onClick={onClick}
+      startNewGame={props.startNewGame}
     />
   );
 };
@@ -140,19 +146,24 @@ const Cards = (props) => {
   //start to pass down state on props
   return (
     <div>
-      {cardIndices.map((cardIndex, index) => (
-        <Card
-          key={index}
-          number={cardIndex}
-          index={index}
-          image={cardArray[cardIndex]}
-          onClick={(e) => createClick(index)}
-          flipped={props.flipped[index]}
-          matched={props.matched[index]}
-        />
-      ))}
+      <div>
+        <button onClick={props.startNewGame}>Play Again</button>
+      </div>
+      <div>
+        {cardIndices.map((cardIndex, index) => (
+          <Card
+            key={index}
+            number={cardIndex}
+            index={index}
+            image={cardArray[cardIndex]}
+            onClick={(e) => createClick(index)}
+            flipped={props.flipped[index]}
+            matched={props.matched[index]}
+          />
+        ))}
+      </div>
     </div>
   );
 };
 
-export default CardGame;
+export default CardGameMatch;
