@@ -1,15 +1,6 @@
+import "./CardGame.css";
 import Card from "./Cards";
-
-import star from "./images/star.svg";
-import heart from "./images/heart.svg";
-import bee from "./images/bee.svg";
-import bolt from "./images/bolt.svg";
-import bunny from "./images/bunny.svg";
-import drop from "./images/drop.svg";
-import happy from "./images/happy.svg";
-import leaf from "./images/leaf.svg";
-import letter from "./images/letter.svg";
-import paw from "./images/paw.svg";
+import getImageMap from "./CardUtils";
 
 import { useState } from "react";
 import React from "react";
@@ -19,24 +10,18 @@ function getCardArray() {
   return Array.from(Object.entries(imageMap));
 }
 
-function getImageMap() {
-  return {
-    heart,
-    star,
-    bee,
-    bolt,
-    bunny,
-    drop,
-    happy,
-    leaf,
-    letter,
-    paw,
-  };
-}
-
 const CardGameMatch = () => {
   const [gameId, setGameId] = useState(1);
-  return <CardGame key={gameId} startNewGame={() => setGameId(gameId + 1)} />;
+  const cardArray = getCardArray();
+  const cardIndices = getShuffledState(cardArray.length);
+  return (
+    <CardGame
+      key={gameId}
+      cardArray={cardArray}
+      cardIndices={cardIndices}
+      startNewGame={() => setGameId(gameId + 1)}
+    />
+  );
 };
 
 function shuffleArray(array) {
@@ -53,11 +38,7 @@ function getShuffledState(nCards) {
 }
 
 const CardGame = (props) => {
-  const cardArray = getCardArray();
-
-  const [cardIndices, setCardIndices] = useState(
-    getShuffledState(cardArray.length)
-  );
+  const cardIndices = props.cardIndices;
 
   const [flipped, setFlipped] = useState(
     new Array(cardIndices.length).fill(false)
@@ -123,7 +104,7 @@ const CardGame = (props) => {
 
   return (
     <Cards
-      cardArray={cardArray}
+      cardArray={props.cardArray}
       cardIndices={cardIndices}
       flipped={flipped}
       matched={matched}
@@ -134,21 +115,13 @@ const CardGame = (props) => {
 };
 
 const Cards = (props) => {
-  //const { cardList, flipped, onClick } = useGameState();
-
   const createClick = (index) => props.onClick(index);
-
-  //var cardList = getCardStates();
-
   const cardIndices = props.cardIndices;
   const cardArray = props.cardArray;
 
   //start to pass down state on props
   return (
     <div>
-      <div>
-        <button onClick={props.startNewGame}>Play Again</button>
-      </div>
       <div>
         {cardIndices.map((cardIndex, index) => (
           <Card
@@ -161,6 +134,11 @@ const Cards = (props) => {
             matched={props.matched[index]}
           />
         ))}
+      </div>
+      <div>
+        <button className="play-again" onClick={props.startNewGame}>
+          Play Again
+        </button>
       </div>
     </div>
   );

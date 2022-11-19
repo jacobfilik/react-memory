@@ -8,7 +8,7 @@ const Card = (props) => {
       className={props.matched ? "matched-card" : className}
       onClick={props.onClick}
     >
-      <div className="flip-card-inner">
+      <div className={props.matched ? "match-card-inner" : "flip-card-inner"}>
         <div className="flip-card-front"></div>
         <div className="flip-card-back">
           <img src={props.image[1]} alt="" />
