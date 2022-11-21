@@ -1,14 +1,9 @@
 import "./CardGame.css";
-import Card from "./Cards";
-import getImageMap from "./CardUtils";
+import { Card, CardState } from "./Cards";
+import { getCardArray, getShuffledState } from "./CardUtils";
 
 import { useState } from "react";
 import React from "react";
-
-function getCardArray() {
-  const imageMap = getImageMap();
-  return Array.from(Object.entries(imageMap));
-}
 
 const CardGameMatch = () => {
   const [gameId, setGameId] = useState(1);
@@ -24,114 +19,90 @@ const CardGameMatch = () => {
   );
 };
 
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-}
-
-function getShuffledState(nCards) {
-  const indices = [...Array(nCards).keys(), ...Array(nCards).keys()];
-  shuffleArray(indices);
-  return indices;
-}
-
 const CardGame = (props) => {
   const cardIndices = props.cardIndices;
 
-  const [flipped, setFlipped] = useState(
-    new Array(cardIndices.length).fill(false)
+  const cardStates = cardIndices.map(
+    (cardIndex, index) =>
+      new CardState(props.cardArray[cardIndex], index, cardIndex)
   );
-  const [matched, setMatched] = useState(
-    new Array(cardIndices.length).fill(false)
-  );
+
+  const [cardStateObject, setCardState] = useState(cardStates);
 
   const [clickLock, setClickLock] = useState(false);
 
-  const onClick = (number) => {
-    console.log("ONCLICK" + number);
+  const onClick = (i) => {
     if (clickLock) {
       return;
     }
 
-    if (flipped[number]) {
+    if (cardStateObject[i].flipped) {
       return;
     }
 
     setClickLock(true);
 
-    const f = [...flipped];
-    f[number] = !f[number];
+    const newState = [...cardStateObject];
+    const newCard = newState[i];
 
-    setFlipped(f);
+    newCard.flipped = true;
 
-    const flippedIndices = [];
-    const rawIndices = [];
-
-    const l = f.filter((v, index) => {
-      if (v === true && matched[index] === false) {
-        rawIndices.push(index);
-        flippedIndices.push(cardIndices[index]);
+    const otherCard = newState.filter((card) => {
+      if (card.flipped && !card.matched && card.index !== newCard.index) {
         return true;
       }
-
       return false;
     });
 
-    const count = l.length;
-
-    if (count === 2) {
-      if (flippedIndices[0] === flippedIndices[1]) {
-        const m = [...matched];
-        m[rawIndices[0]] = true;
-        m[rawIndices[1]] = true;
-        setMatched(m);
-      }
-
-      const flipBack = () => {
-        console.log("FLIP BACK");
-        const f = [...matched];
-        setFlipped(f);
+    if (otherCard.length !== 0) {
+      const other = otherCard[0];
+      if (other.number === newCard.number) {
+        other.matched = true;
+        newCard.matched = true;
+        setCardState(newState);
         setClickLock(false);
-      };
+      } else {
+        const flipBack = () => {
+          const newState = [...cardStateObject];
+          const newCard2 = { ...newState[newCard.index] };
+          const newOther = { ...newState[other.index] };
+          newCard2.flipped = false;
+          newOther.flipped = false;
+          newState[newCard2.index] = newCard2;
+          newState[newOther.index] = newOther;
 
-      setTimeout(flipBack, 2000);
+          setCardState(newState);
+          setClickLock(false);
+        };
+        setTimeout(flipBack, 2000);
+      }
     } else {
+      setCardState(newState);
       setClickLock(false);
     }
   };
 
   return (
     <Cards
-      cardArray={props.cardArray}
-      cardIndices={cardIndices}
-      flipped={flipped}
-      matched={matched}
       onClick={onClick}
       startNewGame={props.startNewGame}
+      cardStates={cardStateObject}
     />
   );
 };
 
 const Cards = (props) => {
   const createClick = (index) => props.onClick(index);
-  const cardIndices = props.cardIndices;
-  const cardArray = props.cardArray;
 
   //start to pass down state on props
   return (
     <div>
       <div>
-        {cardIndices.map((cardIndex, index) => (
+        {props.cardStates.map((cardState, index) => (
           <Card
             key={index}
-            number={cardIndex}
-            index={index}
-            image={cardArray[cardIndex]}
+            state={cardState}
             onClick={(e) => createClick(index)}
-            flipped={props.flipped[index]}
-            matched={props.matched[index]}
           />
         ))}
       </div>

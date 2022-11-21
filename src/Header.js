@@ -9,7 +9,6 @@ const Header = () => {
         <NavLink
           to="/"
           style={({ isActive }) => ({ color: isActive ? "F15B2A" : "blue" })}
-          exact
         >
           Home
         </NavLink>

@@ -24,4 +24,22 @@ function getImageMap() {
   };
 }
 
-export default getImageMap;
+function getCardArray() {
+  const imageMap = getImageMap();
+  return Array.from(Object.entries(imageMap));
+}
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+function getShuffledState(nCards) {
+  const indices = [...Array(nCards).keys(), ...Array(nCards).keys()];
+  shuffleArray(indices);
+  return indices;
+}
+
+export { getCardArray, getShuffledState };
