@@ -10,7 +10,14 @@ const Header = () => {
           to="/"
           style={({ isActive }) => ({ color: isActive ? "F15B2A" : "blue" })}
         >
-          Home
+          One Player
+        </NavLink>
+        {" | "}
+        <NavLink
+          to="/twoplayer"
+          style={({ isActive }) => ({ color: isActive ? "F15B2A" : "blue" })}
+        >
+          Two Player
         </NavLink>
         {" | "}
         <NavLink

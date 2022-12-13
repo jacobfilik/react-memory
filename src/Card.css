@@ -1,26 +1,34 @@
-.matched-card {
-  border: 5px solid #9dceff;
-  background-color: 5px solid #9dceff;
-}
-
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
-.flip-card,
-.flipped-card,
-.matched-card {
+.facedown,
+.faceup {
   width: 66px;
   height: 100px;
   float: left;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
-.flip-card,
-.flipped-card {
+.facedown,
+.faceup {
   border: 5px solid #f1f1f1;
   background-color: #f1f1f1;
 }
 
+.matched {
+  border: 5px solid #9dceff;
+  background-color: 5px solid #9dceff;
+}
+
+.playerone {
+  border: 5px solid #9dffce;
+  background-color: 5px solid #9dffce;
+}
+
+.playertwo {
+  border: 5px solid #ff9dce;
+  background-color: 5px solid #ff9dce;
+}
+
 /* This container is needed to position the front and back side */
-.match-card-inner,
 .flip-card-inner {
   position: relative;
   width: 100%;
@@ -34,13 +42,20 @@
   background-color: #f1f1f1;
 }
 
-.match-card-inner {
+.matched-inner {
   background-color: #9dceff;
 }
 
+.playerone-inner {
+  background-color: #9dffce;
+}
+
+.playertwo-inner {
+  background-color: #ff9dce;
+}
+
 /* Do an horizontal flip when you move the mouse over the flip box container */
-.matched-card .match-card-inner,
-.flipped-card .flip-card-inner {
+.faceup .flip-card-inner {
   transform: rotateY(180deg);
 }
 

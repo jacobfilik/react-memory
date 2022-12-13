@@ -1,21 +1,49 @@
 import "./CardGame.css";
-import { Card, CardState } from "./Cards";
+import { CardState } from "./Card";
+import Cards from "./Cards";
 import { getCardArray, getShuffledState } from "./CardUtils";
 
 import { useState } from "react";
 import React from "react";
 
-const CardGameMatch = () => {
+const CardGameMatch = (props) => {
   const [gameId, setGameId] = useState(1);
   const cardArray = getCardArray();
   const cardIndices = getShuffledState(cardArray.length);
   return (
     <CardGame
       key={gameId}
+      mode={props.mode}
       cardArray={cardArray}
       cardIndices={cardIndices}
       startNewGame={() => setGameId(gameId + 1)}
     />
+  );
+};
+
+const PlayerLabel = (props) => {
+  const className = "player";
+  var class1 = className + " p1";
+  var class2 = className + " p2";
+
+  if (props.playerState.player === -1) {
+    class1 = class1 + " inactive";
+  } else {
+    class2 = class2 + " inactive";
+  }
+
+  return (
+    <>
+      <div className="player-container">
+        <div className={class1}>Player1</div>
+        <div className={class2}>Player2</div>
+      </div>
+      <div className="player-container">
+        <div className={class1}>Score</div>
+        <div className={class1}>:</div>
+        <div className={class2}>Score </div>
+      </div>
+    </>
   );
 };
 
@@ -24,11 +52,15 @@ const CardGame = (props) => {
 
   const cardStates = cardIndices.map(
     (cardIndex, index) =>
-      new CardState(props.cardArray[cardIndex], index, cardIndex)
+      new CardState(props.cardArray[cardIndex], index, cardIndex, "")
   );
 
   const [cardStateObject, setCardState] = useState(cardStates);
-
+  const [playerState, setPlayerState] = useState({
+    player: 1,
+    player1Score: 0,
+    player2score: 0,
+  });
   const [clickLock, setClickLock] = useState(false);
 
   const onClick = (i) => {
@@ -59,6 +91,8 @@ const CardGame = (props) => {
       if (other.number === newCard.number) {
         other.matched = true;
         newCard.matched = true;
+        newCard.player = playerState.player === 1 ? " playerone" : " playertwo";
+        other.player = playerState.player === 1 ? " playerone" : " playertwo";
         setCardState(newState);
         setClickLock(false);
       } else {
@@ -72,8 +106,13 @@ const CardGame = (props) => {
           newState[newOther.index] = newOther;
 
           setCardState(newState);
+          const updatedPlayer = { ...playerState };
+          updatedPlayer.player = updatedPlayer.player * -1;
+
+          setPlayerState(updatedPlayer);
           setClickLock(false);
         };
+
         setTimeout(flipBack, 2000);
       }
     } else {
@@ -83,29 +122,11 @@ const CardGame = (props) => {
   };
 
   return (
-    <Cards
-      onClick={onClick}
-      startNewGame={props.startNewGame}
-      cardStates={cardStateObject}
-    />
-  );
-};
-
-const Cards = (props) => {
-  const createClick = (index) => props.onClick(index);
-
-  //start to pass down state on props
-  return (
     <div>
-      <div>
-        {props.cardStates.map((cardState, index) => (
-          <Card
-            key={index}
-            state={cardState}
-            onClick={(e) => createClick(index)}
-          />
-        ))}
-      </div>
+      {props.mode === "twoplayer" ? (
+        <PlayerLabel playerState={playerState} />
+      ) : null}
+      <Cards onClick={onClick} cardStates={cardStateObject} />
       <div>
         <button className="play-again" onClick={props.startNewGame}>
           Play Again

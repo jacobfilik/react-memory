@@ -14,7 +14,16 @@ function App() {
           path="/"
           element={
             <div className="game">
-              <CardGameMatch />
+              <CardGameMatch mode="oneplayer" />
+            </div>
+          }
+        />
+        <Route
+          exact
+          path="/twoplayer"
+          element={
+            <div className="game">
+              <CardGameMatch mode="twoplayer" />
             </div>
           }
         />

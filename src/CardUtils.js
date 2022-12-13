@@ -8,6 +8,13 @@ import happy from "./images/happy.svg";
 import leaf from "./images/leaf.svg";
 import letter from "./images/letter.svg";
 import paw from "./images/paw.svg";
+import plant from "./images/plant.svg";
+import rain from "./images/rain.svg";
+import rocket from "./images/rocket.svg";
+import sad from "./images/sad.svg";
+import skull from "./images/skull.svg";
+import sun from "./images/sun.svg";
+import trees from "./images/trees.svg";
 
 function getImageMap() {
   return {
@@ -21,6 +28,13 @@ function getImageMap() {
     leaf,
     letter,
     paw,
+    plant,
+    rain,
+    rocket,
+    sad,
+    skull,
+    sun,
+    trees,
   };
 }
 
