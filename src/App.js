@@ -14,7 +14,7 @@ function App() {
           path="/"
           element={
             <div className="game">
-              <CardGameMatch mode="oneplayer" />
+              <CardGameMatch key="oneplayer" mode="oneplayer" />
             </div>
           }
         />
@@ -23,7 +23,7 @@ function App() {
           path="/twoplayer"
           element={
             <div className="game">
-              <CardGameMatch mode="twoplayer" />
+              <CardGameMatch key="twoplayer" mode="twoplayer" />
             </div>
           }
         />

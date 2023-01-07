@@ -39,9 +39,9 @@ const PlayerLabel = (props) => {
         <div className={class2}>Player2</div>
       </div>
       <div className="player-container">
-        <div className={class1}>Score</div>
+        <div className={class1}>{props.playerState.player1Score}</div>
         <div className={class1}>:</div>
-        <div className={class2}>Score </div>
+        <div className={class2}>{props.playerState.player2score} </div>
       </div>
     </>
   );
@@ -57,7 +57,7 @@ const CardGame = (props) => {
 
   const [cardStateObject, setCardState] = useState(cardStates);
   const [playerState, setPlayerState] = useState({
-    player: 1,
+    player: props.mode === "twoplayer" ? 1 : 0,
     player1Score: 0,
     player2score: 0,
   });
@@ -91,8 +91,26 @@ const CardGame = (props) => {
       if (other.number === newCard.number) {
         other.matched = true;
         newCard.matched = true;
-        newCard.player = playerState.player === 1 ? " playerone" : " playertwo";
-        other.player = playerState.player === 1 ? " playerone" : " playertwo";
+
+        if (playerState.player === 1) {
+          newCard.player = " playerone";
+          other.player = " playerone";
+        } else if (playerState.player === -1) {
+          newCard.player = " playertwo";
+          other.player = " playertwo";
+        } else {
+          newCard.player = " single";
+          other.player = " single";
+        }
+
+        const updatedPlayer = { ...playerState };
+        if (updatedPlayer.player === 1) {
+          updatedPlayer.player1Score = updatedPlayer.player1Score + 1;
+        } else {
+          updatedPlayer.player2score = updatedPlayer.player2score + 1;
+        }
+
+        setPlayerState(updatedPlayer);
         setCardState(newState);
         setClickLock(false);
       } else {

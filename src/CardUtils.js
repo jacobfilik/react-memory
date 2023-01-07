@@ -3,7 +3,7 @@ import heart from "./images/heart.svg";
 import bee from "./images/bee.svg";
 import bolt from "./images/bolt.svg";
 import bunny from "./images/bunny.svg";
-import drop from "./images/drop.svg";
+//import drop from "./images/drop.svg";
 import happy from "./images/happy.svg";
 import leaf from "./images/leaf.svg";
 import letter from "./images/letter.svg";
@@ -11,9 +11,9 @@ import paw from "./images/paw.svg";
 import plant from "./images/plant.svg";
 import rain from "./images/rain.svg";
 import rocket from "./images/rocket.svg";
-import sad from "./images/sad.svg";
+//import sad from "./images/sad.svg";
 import skull from "./images/skull.svg";
-import sun from "./images/sun.svg";
+// import sun from "./images/sun.svg";
 import trees from "./images/trees.svg";
 
 function getImageMap() {
@@ -23,7 +23,7 @@ function getImageMap() {
     bee,
     bolt,
     bunny,
-    drop,
+    //drop,
     happy,
     leaf,
     letter,
@@ -31,9 +31,9 @@ function getImageMap() {
     plant,
     rain,
     rocket,
-    sad,
+    //sad,
     skull,
-    sun,
+    //sun,
     trees,
   };
 }
