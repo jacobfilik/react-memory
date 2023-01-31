@@ -154,4 +154,5 @@ const CardGame = (props) => {
   );
 };
 
+export { PlayerLabel, CardGame };
 export default CardGameMatch;
