@@ -1,6 +1,6 @@
 import React from "react";
 
-import { PlayerLabel } from "../CardGame";
+import { PlayerLabel } from "../components/CardGame";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {

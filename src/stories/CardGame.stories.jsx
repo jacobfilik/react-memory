@@ -1,6 +1,6 @@
 import React from "react";
-import { getCardArray, getShuffledState } from "../CardUtils";
-import { CardGame } from "../CardGame";
+import { getCardArray, getShuffledState } from "../components/CardUtils";
+import { CardGame } from "../components/CardGame";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {

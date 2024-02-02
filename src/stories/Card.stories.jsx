@@ -1,8 +1,7 @@
 import React from "react";
 
-import { Card, CardState } from "../Card";
-import { getCardArray } from "../CardUtils";
-import { Button } from "./Button";
+import { Card, CardState } from "../components/Card";
+import { getCardArray } from "../components/CardUtils";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
