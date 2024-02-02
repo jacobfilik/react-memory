@@ -1,13 +1,32 @@
+:root {
+  --card-color: dodgerblue;
+  --card-boarder-color: #9dceff;
+  --card-background-color: #bbb;
+  --game-board-color: #f1f1f1;
+  /* --player-one-color: #9dffce; */
+  --player-one-color: red;
+  /* --player-two-color: #ff9dce; */
+  --player-two-color: green;
+  --player-inactive-color: #999999;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: rgb(49, 49, 49);
+  }
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }

@@ -6,6 +6,8 @@ import { getCardArray, getShuffledState } from "./CardUtils";
 import { useState } from "react";
 import React from "react";
 
+import PlayerLabel from "./PlayerLabel";
+
 const CardGameMatch = (props) => {
   const [gameId, setGameId] = useState(1);
   const cardArray = getCardArray();
@@ -18,32 +20,6 @@ const CardGameMatch = (props) => {
       cardIndices={cardIndices}
       startNewGame={() => setGameId(gameId + 1)}
     />
-  );
-};
-
-const PlayerLabel = (props) => {
-  const className = "player";
-  var class1 = className + " p1";
-  var class2 = className + " p2";
-
-  if (props.playerState.player === -1) {
-    class1 = class1 + " inactive";
-  } else {
-    class2 = class2 + " inactive";
-  }
-
-  return (
-    <>
-      <div className="player-container">
-        <div className={class1}>Player1</div>
-        <div className={class2}>Player2</div>
-      </div>
-      <div className="player-container">
-        <div className={class1}>{props.playerState.player1Score}</div>
-        <div className={class1}>:</div>
-        <div className={class2}>{props.playerState.player2score} </div>
-      </div>
-    </>
   );
 };
 
@@ -140,18 +116,17 @@ const CardGame = (props) => {
   };
 
   return (
-    <div>
+    <div className="game">
       {props.mode === "twoplayer" ? (
         <PlayerLabel playerState={playerState} />
       ) : null}
       <Cards onClick={onClick} cardStates={cardStateObject} />
-      <div>
-        <button className="play-again" onClick={props.startNewGame}>
-          Play Again
-        </button>
-      </div>
+      <button className="play-again" onClick={props.startNewGame}>
+        Play Again
+      </button>
     </div>
   );
 };
 
+export { PlayerLabel, CardGame };
 export default CardGameMatch;

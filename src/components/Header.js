@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div>
+    <div className="header">
       <h1>Memory Cards</h1>
       <nav>
         <NavLink

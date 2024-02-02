@@ -5,7 +5,7 @@ const Cards = (props) => {
   const createClick = (index) => props.onClick(index);
 
   return (
-    <div>
+    <div className="card-container">
       {props.cardStates.map((cardState, index) => (
         <Card
           key={index}

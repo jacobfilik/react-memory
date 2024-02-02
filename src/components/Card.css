@@ -9,23 +9,23 @@
 
 .facedown,
 .faceup {
-  border: 5px solid #f1f1f1;
-  background-color: #f1f1f1;
+  border: 5px solid var(--game-board-color);
+  background-color: var(--game-board-color);
 }
 
 .matched {
-  border: 5px solid #9dceff;
-  background-color: 5px solid #9dceff;
+  border: 5px solid var(--card-boarder-color);
+  background-color: 5px solid var(--card-boarder-color);
 }
 
 .playerone {
-  border: 5px solid #9dffce;
-  background-color: 5px solid #9dffce;
+  border: 5px solid var(--player-one-color);
+  background-color: 5px var(--player-one-color);
 }
 
 .playertwo {
-  border: 5px solid #ff9dce;
-  background-color: 5px solid #ff9dce;
+  border: 5px solid var(--player-two-color);
+  background-color: 5px solid var(--player-two-color);
 }
 
 /* This container is needed to position the front and back side */
@@ -39,19 +39,19 @@
 }
 
 .flip-card-inner {
-  background-color: #f1f1f1;
+  background-color: var(--game-board-color);
 }
 
 .matched-inner {
-  background-color: #9dceff;
+  background-color: var(--card-boarder-color);
 }
 
 .playerone-inner {
-  background-color: #9dffce;
+  background-color: var(--player-one-color);
 }
 
 .playertwo-inner {
-  background-color: #ff9dce;
+  background-color: var(--player-two-color);
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
@@ -65,14 +65,14 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidbbbden;
+  -webkit-backface-visibility: hidden;
   /* Safari */
   backface-visibility: hidden;
 }
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  background-color: #bbb;
+  background-color: var(--card-background-color);
   border-radius: 5px;
   display: flex;
   justify-content: center;
@@ -81,7 +81,7 @@
 
 /* Style the back side */
 .flip-card-back {
-  background-color: dodgerblue;
+  background-color: var(--card-color);
   outline-offset: 5px;
   border-radius: 5px;
   display: flex;
