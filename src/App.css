@@ -1,5 +1,5 @@
 .game {
-  max-width: 600px;
-  margin: 0 auto;
+  margin: auto;
   display: block;
+  width: 100vw;
 }

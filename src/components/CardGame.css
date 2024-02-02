@@ -16,6 +16,17 @@
   text-align: center;
 }
 
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(7, max-content);
+  align-content: center;
+  text-align: center;
+  justify-items: center;
+  justify-content: center;
+  margin: auto;
+  width: 100%;
+}
+
 .player {
   border-radius: 8px;
   border: None;
@@ -29,15 +40,15 @@
 }
 
 .p1 {
-  background-color: #9dffce;
+  background-color: var(--player-one-color);
   display: inline-block;
 }
 
 .p2 {
-  background-color: #ff9dce;
+  background-color: var(--player-two-color);
   display: inline-block;
 }
 
 .inactive {
-  background-color: #999999;
+  background-color: var(--player-inactive-color);
 }
