@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/react-memory/static/css/main.1d3e7191.css",
+    "main.js": "/react-memory/static/js/main.2ac8a0fa.js",
+    "static/js/787.898b32c5.chunk.js": "/react-memory/static/js/787.898b32c5.chunk.js",
+    "static/media/bunny.svg": "/react-memory/static/media/bunny.aaf155567c70a82530d8ec821cdb23c4.svg",
+    "static/media/bee.svg": "/react-memory/static/media/bee.c1470ca8421686eef300f570d8b2a6e9.svg",
+    "static/media/rocket.svg": "/react-memory/static/media/rocket.60e68d767df99ec0bfa10d3c33b77b49.svg",
+    "static/media/paw.svg": "/react-memory/static/media/paw.4fe820e811599305704cb5cef4490279.svg",
+    "static/media/happy.svg": "/react-memory/static/media/happy.a31c7757d49c0f067a527c73c15985f4.svg",
+    "static/media/rain.svg": "/react-memory/static/media/rain.d01a186be2b03c84b37c82a15ffa7e65.svg",
+    "static/media/skull.svg": "/react-memory/static/media/skull.fc049f21665ee61152f34d74ed113228.svg",
+    "index.html": "/react-memory/index.html",
+    "static/media/leaf.svg": "/react-memory/static/media/leaf.6a8aac97c01ee4780d14ba7594228ed1.svg",
+    "static/media/heart.svg": "/react-memory/static/media/heart.e1cd6a9144659caecbe5384f016fcde4.svg",
+    "static/media/plant.svg": "/react-memory/static/media/plant.6e07cdfb4a4ab35a55c2e65b55f62a92.svg",
+    "static/media/trees.svg": "/react-memory/static/media/trees.d3385fbffc84b403f2c3979d955ed6b8.svg",
+    "static/media/star.svg": "/react-memory/static/media/star.6159865ea9c8d3e4ccd0190c0294b1db.svg",
+    "static/media/letter.svg": "/react-memory/static/media/letter.5a387e74dbef285fe81a3cd40ea170b5.svg",
+    "static/media/bolt.svg": "/react-memory/static/media/bolt.96ced612a5235f82403da85aedc7141a.svg",
+    "main.1d3e7191.css.map": "/react-memory/static/css/main.1d3e7191.css.map",
+    "main.2ac8a0fa.js.map": "/react-memory/static/js/main.2ac8a0fa.js.map",
+    "787.898b32c5.chunk.js.map": "/react-memory/static/js/787.898b32c5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1d3e7191.css",
+    "static/js/main.2ac8a0fa.js"
+  ]
+}
