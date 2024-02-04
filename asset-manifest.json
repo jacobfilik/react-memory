@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-memory/static/css/main.1d3e7191.css",
-    "main.js": "/react-memory/static/js/main.2ac8a0fa.js",
+    "main.js": "/react-memory/static/js/main.a3196406.js",
     "static/js/787.898b32c5.chunk.js": "/react-memory/static/js/787.898b32c5.chunk.js",
     "static/media/bunny.svg": "/react-memory/static/media/bunny.aaf155567c70a82530d8ec821cdb23c4.svg",
     "static/media/bee.svg": "/react-memory/static/media/bee.c1470ca8421686eef300f570d8b2a6e9.svg",
@@ -19,11 +19,11 @@
     "static/media/letter.svg": "/react-memory/static/media/letter.5a387e74dbef285fe81a3cd40ea170b5.svg",
     "static/media/bolt.svg": "/react-memory/static/media/bolt.96ced612a5235f82403da85aedc7141a.svg",
     "main.1d3e7191.css.map": "/react-memory/static/css/main.1d3e7191.css.map",
-    "main.2ac8a0fa.js.map": "/react-memory/static/js/main.2ac8a0fa.js.map",
+    "main.a3196406.js.map": "/react-memory/static/js/main.a3196406.js.map",
     "787.898b32c5.chunk.js.map": "/react-memory/static/js/787.898b32c5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1d3e7191.css",
-    "static/js/main.2ac8a0fa.js"
+    "static/js/main.a3196406.js"
   ]
 }
