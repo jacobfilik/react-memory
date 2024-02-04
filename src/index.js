@@ -8,7 +8,7 @@ import reportWebVitals from "./reportWebVitals";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <div>
-    <BrowserRouter basename="{process.env.PUBLIC_URL}">
+    <BrowserRouter basename="react-memory">
       <App />
     </BrowserRouter>
   </div>
