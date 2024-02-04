@@ -1,7 +1,7 @@
 {
   "name": "react-memory",
   "version": "0.1.0",
-  "homepage": "http://jfilik.com/memory",
+  "homepage": "http://jfilik.com/react-memory",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
